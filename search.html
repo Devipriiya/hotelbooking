@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Filter for Best Places -->
+<label for="placeFilter">Filter Best Places:</label>
+<select id="placeFilter" onchange="filterPlaces()">
+    <option value="all">All</option>
+    <option value="priceing-table-main">Best Places</option>
+    <option value="priceing-table-main">Category 2</option>
+    <!-- Add more categories as needed -->
+</select>
+
+<!-- Filter for Best Hotels -->
+<label for="hotelFilter">Filter Best Hotels:</label>
+<select id="hotelFilter" onchange="filterHotels()">
+    <option value="all">All</option>
+    <option value="type1">Type 1</option>
+    <option value="type2">Type 2</option>
+    <!-- Add more types as needed -->
+</select>
+
+<!-- List of Best Places -->
+<div class="places-list">
+    <!-- Place elements with common class 'place' -->
+    <div class="place category1">Place 1</div>
+    <div class="place category2">Place 2</div>
+    <!-- Add more place elements with appropriate categories -->
+</div>
+
+<!-- List of Best Hotels -->
+<div class="hotels-list">
+    <!-- Hotel elements with common class 'hotel' -->
+    <div class="hotel type1">Hotel 1</div>
+    <div class="hotel type2">Hotel 2</div>
+    <!-- Add more hotel elements with appropriate types -->
+</div>
+
+    
+</body>
+<style>
+    .place,
+.hotel {
+    display: none;
+}
+
+.place.show,
+.hotel.show {
+    display: block;
+}
+
+</style>
+<script>
+    function filterPlaces() {
+    var category = document.getElementById("placeFilter").value;
+    var places = document.querySelectorAll(".place");
+
+    places.forEach(function (place) {
+        place.classList.remove("show");
+        if (category === "all" || place.classList.contains(category)) {
+            place.classList.add("show");
+        }
+    });
+}
+
+function filterHotels() {
+    var type = document.getElementById("hotelFilter").value;
+    var hotels = document.querySelectorAll(".hotel");
+
+    hotels.forEach(function (hotel) {
+        hotel.classList.remove("show");
+        if (type === "all" || hotel.classList.contains(type)) {
+            hotel.classList.add("show");
+        }
+    });
+}
+
+</script>
+</html>
